@@ -10,3 +10,11 @@
  * Text Domain: assets-ninja
  * Domain Path: /languages/
  */
+
+ class AssetsNinja {
+    function __construct(){
+        echo 'hi';
+    }
+ }
+
+ new AssetsNinja();
