@@ -1,0 +1,4 @@
+=====================================================================
+plugin_loaded hook
+
+The plugins_loaded hook is fired once all active plugins have been loaded. It's a great place to initialize your plugin because you can be sure that all other plugins are up and running, and you can safely interact with them if needed.
