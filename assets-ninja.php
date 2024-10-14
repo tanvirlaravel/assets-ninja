@@ -56,7 +56,9 @@
 
 
     public function load_admin_assets($screen){
-        if("edit.php" == $screen){        
+        $s_screen = get_current_screen();
+        // var_dump($s_screen);
+        if("edit.php" == $screen && 'page' == $s_screen->post_type ){        
             wp_enqueue_script( "asn-admin-main", ASN_ASSETS_ADMIN_DIR . "/js/admin-main.js", array('jquery'), $this->version, true);
         }
     }

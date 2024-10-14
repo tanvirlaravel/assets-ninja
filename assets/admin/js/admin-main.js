@@ -1,3 +1,3 @@
 ;(function($){
-    console.log('from adin js')
+    console.log('from admin js')
 })(jQuery);
