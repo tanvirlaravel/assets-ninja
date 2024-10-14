@@ -23,6 +23,7 @@
         $this->version = time();
         add_action( 'plugin_loaded', [$this, "load_text_domain"]);
         add_action( 'wp_enqueue_scripts', [$this, "load_front_assets"] );
+        add_action( 'admin_enqueue_scripts', [$this, "load_admin_assets"] );
     }
 
     public function load_text_domain(){
@@ -51,6 +52,13 @@
         wp_localize_script('asn-main', 'moredata', $moredata);
         wp_localize_script('asn-main', 'trasnlation', $translated_string);
        
+    }
+
+
+    public function load_admin_assets($screen){
+        if("edit.php" == $screen){        
+            wp_enqueue_script( "asn-admin-main", ASN_ASSETS_ADMIN_DIR . "/js/admin-main.js", array('jquery'), $this->version, true);
+        }
     }
  }
 
