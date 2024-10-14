@@ -7,7 +7,7 @@
  * Author: Md Tanvirul Islam
  * Author URI: tnavir.github
  * License: GPLv2 or later 
- * Text Domain: assetsninja
+ * Text Domain: assets-ninja
  * Domain Path: /languages/
  */
 
@@ -26,15 +26,30 @@
     }
 
     public function load_text_domain(){
-        load_plugin_textdomain( "assetsninja", false, plugin_dir_url( __FILE__ ) . "/languages" );
+        load_plugin_textdomain( "assets-ninja", false, plugin_dir_url( __FILE__ ) . "/languages" );
     }
 
     public function load_front_assets(){
         // load css
         wp_enqueue_style("asn-main", ASN_ASSETS_PUBLIC_DIR . "/css/main.css", null, $this->version);
-        
+
         // load js
         wp_enqueue_script( "asn-main", ASN_ASSETS_PUBLIC_DIR . "/js/main.js", array('jquery'), $this->version, true);
+
+        $data = array(
+            'name'  => 'Tanvir',
+            'url'   => 'www.tanvir.com'
+        );
+        $moredata = array(
+            'name'  => 'SAjib',
+            'url'   => 'www.sajib.com'
+        );
+        $translated_string = array(
+            'greetings'  => __('Hello World', 'assets-ninja')
+        );
+        wp_localize_script('asn-main', 'sitedata', $data);
+        wp_localize_script('asn-main', 'moredata', $moredata);
+        wp_localize_script('asn-main', 'trasnlation', $translated_string);
        
     }
  }
