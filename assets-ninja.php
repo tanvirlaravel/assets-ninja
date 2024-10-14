@@ -19,8 +19,7 @@
  class AssetsNinja {
 
     private $version;
-    function __construct(){
-        // for cast busting
+    function __construct(){       
         $this->version = time();
         add_action( 'plugin_loaded', [$this, "load_text_domain"]);
         add_action( 'wp_enqueue_scripts', [$this, "load_front_assets"] );
@@ -31,8 +30,12 @@
     }
 
     public function load_front_assets(){
-        wp_enqueue_script( "assetsninja-main", ASN_ASSETS_PUBLIC_DIR . "/js/main.js", array('jquery'), $this->version, true);
-        wp_enqueue_script( "assetsninja-more", ASN_ASSETS_PUBLIC_DIR . "/js/more.js", array('jquery'), $this->version, true);
+        // load css
+        wp_enqueue_style("asn-main", ASN_ASSETS_PUBLIC_DIR . "/css/main.css", null, $this->version);
+        
+        // load js
+        wp_enqueue_script( "asn-main", ASN_ASSETS_PUBLIC_DIR . "/js/main.js", array('jquery'), $this->version, true);
+       
     }
  }
 
